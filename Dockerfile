@@ -56,11 +56,13 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci --only=production
+RUN npm ci
 
 COPY . .
 
 RUN npm run build
+
+RUN npm prune --production
 
 RUN mkdir -p ./temp
 
